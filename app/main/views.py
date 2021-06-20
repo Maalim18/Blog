@@ -110,7 +110,7 @@ def new_comment(id):
         content = form.content.data
 
         new_comment = Comment(
-            blog_id=blog.id, comments=content, user=current_user)
+            blog_id=blog.id, comments=content, user=current_user
 
         new_comment.save_comment()
         print(new_comment)
