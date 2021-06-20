@@ -12,4 +12,4 @@ def get_quote():
         quote_response = json.loads(quote_data)
 
         
-        
+        return quote_response
