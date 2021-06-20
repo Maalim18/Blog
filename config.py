@@ -5,7 +5,8 @@ class Config:
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:1234@localhost/blog'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:069813@localhost/blog'
+    # app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://moringa:069813@localhost/blog"
     
     #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
