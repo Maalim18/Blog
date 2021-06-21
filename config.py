@@ -5,7 +5,7 @@ class Config:
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:069813@localhost/blog'
+    
     # app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://moringa:069813@localhost/blog"
     
     #  email configurations
@@ -21,9 +21,11 @@ class ProdConfig(Config):
 
 
 class DevConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:069813@localhost/blog'
     DEBUG = True
 
 config_options = {
 'development':DevConfig,
 'production':ProdConfig
+
 }

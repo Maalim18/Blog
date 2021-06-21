@@ -1,11 +1,13 @@
 # Title
-Blog-website
+a Blog Website
+## Author
+mohamed Maalim Ali
 
 # Description
-Blog-Website is a personal blogging website where you can create and share your opinions and other users can read and comment on them. It also has random quotes that inspire the users. 
+it is a personal blogging website where you can create blogs  and other users can read and comment on them. 
 
 # Features
-As a user of the web application you will be able to:
+you can  do the following
 
 See all blogs
 Create an account
@@ -17,18 +19,18 @@ Edit your profile i.e will be able to add a short bio about yourself and a profi
 # Development
 Getting started
 Prerequisites
-python3.6
+python3.8
 virtual environment
 pip
 Cloning
 In your terminal:
 
-  $ git clone https://github.com/abdisamad100/blog-website.git
+  $ git clone https://github.com/Maalim18/Blog.git
   $ cd blog-website
 Running the Application
-Install virtual environment using $ python3.6 -m venv --without-pip virtual
+Install virtual environment using $ python3.8 -m venv env
 
-Activate virtual environment using $ source virtual/bin/activate
+Activate virtual environment using $ source env/bin/activate
 
 Download pip in our environment using $ curl https://bootstrap.pypa.io/get-pip.py | python
 Create a start.sh file in the root of the folder and add the following code:
@@ -58,13 +60,12 @@ Bootstrap
 The blog doesn't meet all the user's stories/needs.
 
 
-# Author 
-Abdisamad Mohamed
+
 
 # License
 MIT License
 
-Copyright (c) 2020 Abdisamad Mohamed
+
 
 
 
