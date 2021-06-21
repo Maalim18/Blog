@@ -13,5 +13,8 @@
     <p class="black-text">By {{blog.user.username}}</p>
     <p>{{blog.content}}</p>
     <br><hr><br><br>
+     <a href="{{url_for('main.new_comment', id=blog.id)}}">comment</a>
+     <a href="{{url_for('main.deleteBlog',id = blog.id)}}">delete blog</a>
+     <a href="{{url_for('main.updateBlog',id = blog.id)}}">update blog</a>
     {% endfor%}
 {% endblock %}

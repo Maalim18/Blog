@@ -1,7 +1,7 @@
 from flask_login import login_required,current_user
 from flask import render_template,request,redirect,url_for,abort
 from . import main
-from ..models import User,Blog
+from ..models import User,Blog,Comment
 from .. import db,photos
 from datetime import datetime
 from ..requests import get_quote
@@ -74,6 +74,34 @@ def post(post_id):
 
     return render_template('post.html', post=post)
 
+
+
+@main.route('/deleteblog/<int:id>', methods=['GET', 'POST'])
+@login_required
+def deleteBlog(id):
+    blog = Blog.query.get_or_404(id)
+    db.session.delete(blog)
+    db.session.commit()
+    return redirect(url_for('main.blogs'))   
+
+@main.route('/update/<int:id>', methods=['GET', 'POST'])
+@login_required
+def updateBlog(id):
+    blog = Blog.query.get_or_404(id)
+    form = BlogForm()
+    if form.validate_on_submit():
+        blog.title = form.title.data
+        blog.content = form.content.data
+        db.session.add(blog)
+        db.session.commit()
+
+        return redirect(url_for('main.blogs'))
+    elif request.method == 'GET':
+        form.title.data = blog.title
+        form.content.data = blog.content
+    return render_template('updateBlog.html', form=form)    
+
+
 @main.route('/post')
 def add():
     return render_template('post.html')
@@ -99,21 +127,32 @@ def addpost():
 
 
 
-@main.route('/post/comment/new/<int:id>', methods=['GET', 'POST'])
+@main.route('/comment/new/<int:id>', methods=['GET', 'POST'])
 @login_required
 def new_comment(id):
     form = CommentForm()
     
     blog = Blog.query.filter_by(id=id).first()
-
+    blogComments = Comment.query.filter_by(blog_id=id).all()
     if form.validate_on_submit():
-        content = form.content.data
+        content = form.comment.data
 
         new_comment = Comment(
-            blog_id=blog.id, comments=content, user=current_user)
+            blog_id=blog.id, content=content, user=current_user)
 
-        new_comment.save_comment()
+        new_comment.save()
         print(new_comment)
-        return redirect(url_for('main.index', id=post.id))
+        # return redirect(url_for('main.index'))
 
-    return render_template('new_comment.html', comment_form=form)
+    return render_template('new_comment.html', comment_form=form,blog_comment=blogComments)
+
+@main.route('/delete/<int:id>', methods=['GET', 'POST'])
+@login_required
+def deleteComment(id):
+    comment =Comment.query.get_or_404(id)
+    db.session.delete(comment)
+    db.session.commit()
+    
+    return redirect (url_for('main.blogs'))    
+
+
