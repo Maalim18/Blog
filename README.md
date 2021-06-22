@@ -40,14 +40,10 @@ Create a start.sh file in the root of the folder and add the following code:
   export SECRET_KEY=<your-secret-key>
 Edit the configuration instance in manage.py by commenting on production instance and uncommenting development instance
 
-To run the application, in your terminal:
+## To run the application, in your terminal:
 
   $ chmod a+x start.sh
   $ ./start.sh
-Testing the Application
-To run the tests for the class file:
-
-  $ python3.6 manage.py server
 
 # Technologies Used
 Python3.8
@@ -56,8 +52,7 @@ HTML
 Bootstrap
 
 
-# Known Bugs
-The blog doesn't meet all the user's stories/needs.
+
 
 
 
