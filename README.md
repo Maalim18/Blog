@@ -50,7 +50,7 @@ To run the tests for the class file:
   $ python3.6 manage.py server
 
 # Technologies Used
-Python3.6
+Python3.8
 Flask
 HTML
 Bootstrap
